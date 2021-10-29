@@ -45,35 +45,65 @@
     <!--<h1 style="text-align: center;">No ves que esta vacio? mongol</h1> -->
     <!--PANEL DE ACTIVIDADES-->
     <div class="container justify-content-center">
-    <form action="./consultar_integrantes.php" method="GET">
+    <form action="./consultar_integrantes.php" method="POST">
         <h2 style="text-align: center;">Sistema de consulta de integrantes</h2>
         
             <div class="row justify-content-center">
                 <div class="col-sm-4">
                     <div class="container">
-                    <label for="" class="form-label">Criterio de filtro</label>
+                    <label for="criterio" class="form-label">Criterio de filtro</label>
                         <br>
-                    <select name="criterio" id="criterio" class="form-select">
+                    <select name="criterio" id="criterio" class="form-select" onchange="get_valor_filtro();">
                         <option value="codAlumno">Codigo estudiante</option>
                         <option value="nombres">Nombre y apellidos</option>
                         <option value="sexo">Sexo</option>
                         <option value="Area">Area</option>
                         <option value="Escuela">Escuela</option>
-                        <option value="Estado">Estado</option>
+                        <option value="estado">Estado</option>
                     </select>
                     </div>
             
                 </div>
                 <div class="col-sm-4">
-                <label for="" class="form-label">Valor de busqueda</label>
-                <input type="text" name="valor" id="valor" class="form-control">
+                    <label for="" class="form-label">Valor de busqueda</label>
+                    <br>
+                    <input type="text" name="valor" id="valor" class="form-control">
+                    <select name="valor_sexo" id="valor_sexo" class="form-select" style="display:none;">
+                            <option value="Hombre">Hombre</option>
+                            <option value="Mujer">Mujer</option>
+                            <option value="Homosexual">Homosexual</option>
+                            <option value="Lesbiana">Lesbiana</option>
+                            <option value="Transgenero">Transgenero</option>
+                            <option value="No binario">No binario (Compañere)</option>
+                            <option value="">Prefiero no decirlo</option>
+                            <option value="">No me decido</option>
+                    </select>
+                    <select name="valor_area" id="valor_area" class="form-select"  style="display:none;">
+                      <option value="Logistica">Logistica</option>
+                      <option value="Desarrollo de proyectos">Desarrollo de proyectos</option>
+                      <option value="Marketing">Marketing</option>
+                     
+                    </select>
+
+                    <select name="valor_escuela" id="valor_escuela" style="display:none;" class="form-select">
+                      <option value="Ingenieria de sistemas">Ingenieria de sistemas</option>
+                      <option value="Ingenieria de software">Ingenieria de software</option>
+                    
+                    </select>
+
+                    <select name="valor_estado" id="valor_estado" style="display:none;" class="form-select">
+                      <option value="ACTIVO">Activo</option>
+                      <option value="DESACTIVO">Desactivo</option>
+                    
+                    </select>
+                    
                 </div>
             </div>
             <br>
             <div class="row justify-content-center">
                 
-                <input type="button" value="Buscar" class="btn btn-success btn-lg">
-               
+                
+                <button type="submit" class="btn btn-success btn-lg">Consultar</button>
                 
             </div>
         
@@ -104,16 +134,50 @@
             include_once("../Database/conexion.php");
                         
             
-            $sql = "SELECT I.codAlumno,I.nombres,
-                I.apellidos,I.edad,I.fechaNacimiento,
-                I.sexo,I.telefono,I.correo
-                ,I.estado,A.nombre as Area,
+            $sql = "SELECT I.codAlumno as codAlumno,
+                I.nombres as nombres,
+                I.apellidos as apellidos,I.edad as edad,I.fechaNacimiento as fechaNacimiento,
+                I.sexo as sexo,I.telefono as telefono,I.correo as correo
+                ,I.estado as estado,A.nombre as Area,
                 E.nombre as Escuela
                 FROM integrantes AS I
                 LEFT JOIN area as A ON I.idarea=A.idarea
-                LEFT JOIN Escuela as E ON I.idescuela=E.idEscuela
-                ORDER BY I.nombres ASC;";
-        
+                LEFT JOIN Escuela as E ON I.idescuela=E.idEscuela";
+            
+            if(isset($_POST["criterio"])){
+                $criterio = $_POST["criterio"];
+                if($criterio == "codAlumno"){
+                    $criterio="I.codAlumno";
+                    $valor = $_POST["valor"];
+                }else if($criterio == "nombres"){
+                    $criterio="I.nombres";
+                    $valor = $_POST["valor"];
+                }
+                else if($criterio == "sexo"){
+                    $criterio = "I.sexo";
+                    $valor = $_POST["valor_sexo"];
+                }else if($criterio == "Area"){
+                    $criterio = "A.nombre";
+                    $valor = $_POST["valor_area"];
+                }else if($criterio == "Escuela"){
+                    $criterio = "E.nombre";
+                    $valor = $_POST["valor_escuela"];
+                }
+                if($criterio == "estado"){
+                    $criterio = "I.estado";
+                    $valor = $_POST["valor_estado"];
+                    $sql = $sql." WHERE ".$criterio."='".$valor."'";
+                }else{
+                    $sql = $sql." WHERE ".$criterio." LIKE '%".$valor."%'";
+                }
+                if($valor==""){
+                    $valor="Todos";
+                }
+                echo "<div class='alert alert-primary' role='alert'>Consulta: ".$_POST['criterio']." = $valor</div>";
+                unset($_POST["criterio"]);
+            }
+            //die($sql);
+            //echo $sql;
             $result = mysqli_query($conexion, $sql);
             //cuantos reultados hay en la busqueda
             $num_resultados = mysqli_num_rows($result);
@@ -181,6 +245,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="./scripts/filtros.js"></script>
 </body>
 
 </html>
