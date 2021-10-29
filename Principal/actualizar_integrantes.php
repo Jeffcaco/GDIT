@@ -2,7 +2,7 @@
      //recoger sesiones activas
      session_start();
      if(!isset($_SESSION['user'])){
-         //die("Acceso restringido al sitio");
+         die("Acceso restringido al sitio");
      }
 ?>
 <!doctype html>
@@ -32,10 +32,11 @@
                 <img src="https://i.ibb.co/sPhKV5z/gdit-logo-online.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" id="logo" alt="logo de veterinaria"
                     style="width: 60px;height: 60px;">
                 <a class="navbar-brand" href="#" style="color: white;">GDIT Logistica | Administración de datos</a>
+                <a class="btn" href="index.php" role="button" style=" background-color:rgb(81, 196, 211); color:white;">Volver</a>
                 
             </div>
 
-            <a class="btn " href="../Login/index.html" role="button" style="background-color: rgb(19, 44, 51); color:white">Log Out</a>
+            <a class="btn " href="../Login/cerrar_sesion.php" role="button" style="background-color: rgb(19, 44, 51); color:white">Log Out</a>
 
         </div>
     </nav>

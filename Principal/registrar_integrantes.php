@@ -1,7 +1,6 @@
 <?php
  session_start();
- $_SESSION['usuario']="JOHAN TEMPORAL";
- if(!isset($_SESSION['usuario'])){
+ if(!isset($_SESSION['user'])){
  	//header('Location: principal.php');
      die("Acceso restringido al recurso web.");
  }
@@ -31,7 +30,7 @@
                 <a class="btn" href="index.php" role="button" style=" background-color:rgb(81, 196, 211); color:white;">Volver</a>
             </div>
 
-            <a class="btn " href="../Login/index.html" role="button" style="background-color: rgb(19, 44, 51); color:white">Log Out</a>
+            <a class="btn " href="../Login/cerrar_sesion.php" role="button" style="background-color: rgb(19, 44, 51); color:white">Log Out</a>
 
         </div>
     </nav>
