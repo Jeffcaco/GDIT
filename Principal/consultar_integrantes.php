@@ -2,7 +2,7 @@
      //recoger sesiones activas
      session_start();
      if(!isset($_SESSION['user'])){
-         //die("Acceso restringido al sitio");
+         die("Acceso restringido al sitio");
      }
      header('Content-Type: text/html; charset=UTF-8');
 ?>

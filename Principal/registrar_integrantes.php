@@ -1,7 +1,6 @@
 <?php
  session_start();
- $_SESSION['usuario']="JOHAN TEMPORAL";
- if(!isset($_SESSION['usuario'])){
+ if(!isset($_SESSION['user'])){
  	//header('Location: principal.php');
      die("Acceso restringido al recurso web.");
  }
