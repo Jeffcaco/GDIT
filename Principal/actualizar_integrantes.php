@@ -4,6 +4,7 @@
      if(!isset($_SESSION['user'])){
          die("Acceso restringido al sitio");
      }
+        //incluir funciones para procesar la API de resultados
 ?>
 <!doctype html>
 <html lang="es">

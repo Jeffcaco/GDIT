@@ -110,8 +110,8 @@
     </form>
     </div>
   <br>
-    <div class="container-fluid">
-    <table class="table">
+    <div class="table-responsive">
+    <table class="table table-striped w-auto ">
    <thead class="table" style="background-color:#D8E3E7">
     <tr>
       <th scope="col">Codigo Alumno</th>
@@ -181,7 +181,7 @@
             $result = mysqli_query($conexion, $sql);
             //cuantos reultados hay en la busqueda
             $num_resultados = mysqli_num_rows($result);
-            echo "<div class='alert alert-success' role='alert'> $num_resultados Integrantes encontrados.</div>";
+            echo "<div class='alert alert-success' role='alert' style='position:relative;'> $num_resultados Integrantes encontrados.</div>";
             //mostrando informacion de los perros y detalle
             for ($i=0; $i <$num_resultados; $i++) {
             $row = mysqli_fetch_array($result); 
