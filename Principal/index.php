@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-=======
 <?php
      //recoger sesiones activas
      session_start();
@@ -8,7 +5,6 @@
          //die("Acceso restringido al sitio");
      }
 ?>
->>>>>>> b2bcc5488d67de9214ed50bf7101a7aa774e25c1
 <!doctype html>
 <html lang="es">
 

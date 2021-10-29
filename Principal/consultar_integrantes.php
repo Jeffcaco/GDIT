@@ -40,9 +40,83 @@
         </div>
     </nav>
 
-    <h1 style="text-align: center;">No ves que esta vacio? mongol</h1>
+    <!--<h1 style="text-align: center;">No ves que esta vacio? mongol</h1> -->
     <!--PANEL DE ACTIVIDADES-->
-    
+    <form action="./FormConsultarPerro.php" method="POST">
+        <h2 style="text-align: center;">Sistema de consulta de integrantes</h2>
+        <div class="container">
+            <label for="" class="form-label">Ingresar Nombre a buscar</label>
+            <input type="text" name="nombre" id="">
+            <br>
+            <Input type="submit" value="Buscar" class="btn btn-success">
+            <input type="reset" value="Limpiar" class="btn btn-danger">
+        </div>
+
+    </form>
+  <br>
+    <div class="container-fluid">
+    <table class="table">
+   <thead class="table" style="background-color:#D8E3E7">
+    <tr>
+      <th scope="col">DNI</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Raza</th>
+      <th scope="col">Genero</th>
+      <th scope="col">Fecha de nacimiento</th>
+      <th scope="col">Foto</th>
+      <th scope="col">Historia Clinica</th>
+
+    </tr>
+  </thead>
+  <tbody class="myTable">
+        <?php
+            if(isset($_POST["nombre"])){
+       
+            include_once("../model/db.php");
+                        //(nombre de la base de datos, $enlace) mysql_select_db("RelocaDB",$link);
+            //capturando datos
+            $v2 = $_POST['nombre'];
+            //conuslta SQL
+            $sql = "select * from Perro where Nombre like '%".$v2."%'";
+            $result = mysqli_query($conexion, $sql);
+            //cuantos reultados hay en la busqueda
+            $num_resultados = mysqli_num_rows($result);
+            echo "<p>Número de perros encontrados: ".$num_resultados."</p>";
+            //mostrando informacion de los perros y detalle
+            for ($i=0; $i <$num_resultados; $i++) {
+            $row = mysqli_fetch_array($result); 
+      
+
+            echo "<tr>";
+                                //para obtener los credenciales del formulario
+                    echo  "<td>".$row['DNI']."</td>";
+                    echo  "<td>".$row['Nombre']."</td>";    
+                    echo "<td>".$row['Raza']."</td>";
+                    
+                    if($row['Genero']==1) $sexo="Macho";
+                    else $sexo="Hembra";
+                    echo "<td>".$sexo."</td>";
+                    if($row["FechaNacimiento"]==NULL) $nac="No especificado";
+                    else $nac=$row["FechaNacimiento"];
+                    echo "<td>".$nac."</td>";
+                   
+                    echo "<td>";
+                    echo '<img class="rounded" src="data:image/jpeg;base64,'.base64_encode( $row['Foto'] ).'" style="height:100px;width:100px";/>';
+                    echo "</td>";
+                    echo "<td>";
+                    echo "<a class='btn btn-primary' role='button' href='../model/consultar_historia.php?dni=".$row['DNI']."'>Consultar</a>";
+                    echo "<a class='btn btn-warning m-1' role='button' href='../model/registrar_historia.php?dni=".$row['DNI']."'>Registrar</a>";
+                    echo "</td>";
+             echo " </tr>";
+            }
+        }
+        ?>
+    </tbody>
+    </table>
+
+
+    </div>
+
 
      <!--Pie de pagina-->
     <footer class="text-center text-white fixed-bottom" style="background-color: rgb(19, 44, 51); height:7%;">
