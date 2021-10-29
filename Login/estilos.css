@@ -81,7 +81,7 @@
     .titulo{
         width: 90%;
         margin-left: 5%;
-        margin-top: 50px;
+        margin-top: 20px;
         height: 6vh;
         border-radius: 5px;
         background: rgba(0,0,0,0.4);
@@ -93,7 +93,7 @@
     .login{
         width: 90%;
         margin-left: 5%;
-        margin-top: 50px;
+        margin-top: 40px;
         height: 55vh;
         border-radius: 10px;
         background: rgba(0,0,0,0.4);
