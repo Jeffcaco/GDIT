@@ -9,7 +9,7 @@
 <html lang="es">
 
 <head>
-    <title>Home</title>
+    <title>GDIT | Consultar integrantes</title>
     <!--Developers 
         @Castillo Cornejo, Jeffrey Bryan		
         @Mitma Huaccha, Johan Valerio  	-->
@@ -40,56 +40,9 @@
         </div>
     </nav>
 
-    <h1 style="text-align: center;">Administracion de Integrantes | Logistica</h1>
+    <h1 style="text-align: center;">No ves que esta vacio? mongol</h1>
     <!--PANEL DE ACTIVIDADES-->
-    <br>
-    <div class="container ">
-        <div class="row justify-content-center">
-            <div class="col-md-4">
-                <div class="container">
-                    <a role="button" class="btn btn-secondary btn-lg" href="registrar_integrantes.php">
-                        Registrar Integrante
-                    </a>
-                </div>
-
-            </div>
-            <div class="col-md-4">
-                <div class="container">
-                    <a role="button" class="btn btn-secondary btn-lg" href="consultar_integrantes.php">
-                        Consultar Usuarios
-                    </a>
-                </div>
-            </div>
-
-        </div>
-        <br>
-        <div class="row justify-content-center">
-            <div class="col-md-4">
-                <div class="container">
-                    <a role="button" class="btn btn-secondary btn-lg" href="../Dashboard/index.php">
-                        Consultar Dashboards
-                    </a>
-                </div>
-
-            </div>
-
-            <div class="col-md-4">
-                <div class="container">
-                    <a role="button" class="btn btn-secondary btn-lg" href="actualizar_integrantes.php">
-                        Actualizar Usuario
-                    </a>
-                </div>
-
-            </div>
-        </div>
-        <br>
-        <div class="row justify-content-center">
-
-            <img src="https://i.redd.it/jy8ocouzn8311.jpg" alt="tecleando" style="width: 20%; height: auto;" class="rounded">
-        </div>
-
-
-
+    
 
      <!--Pie de pagina-->
     <footer class="text-center text-white fixed-bottom" style="background-color: rgb(19, 44, 51); height:7%;">
