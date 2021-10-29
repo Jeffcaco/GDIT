@@ -82,7 +82,7 @@
         width: 90%;
         margin-left: 5%;
         margin-top: 20px;
-        height: 6vh;
+        height: 35px;
         border-radius: 5px;
         background: rgba(0,0,0,0.4);
         text-align: center;
@@ -94,7 +94,7 @@
         width: 90%;
         margin-left: 5%;
         margin-top: 30px;
-        height: 55vh;
+        height: 420px;
         border-radius: 10px;
         background: rgba(0,0,0,0.4);
         color: #fff !important;
