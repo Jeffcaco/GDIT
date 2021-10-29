@@ -1,36 +1,4 @@
-<?php
-     //recoger sesiones activas
-     session_start();
-     if(isset($_SESSION['user'])){
-         header("Location:../inicio_admin/");
-     }else{
-            //SI NO EXISTE. VERIFICAR SI SE HIZO UN POST
-            if(isset($_POST['user']) && isset($_POST['password'])){
-              session_start();
-                $user = $_POST['user'];
-                $password = $_POST['password'];
-                $query = "SELECT * FROM Usuario WHERE user = '$user' AND password = '$password'";
-                //die($query);
-                include_once("../database/conexion.php");
-                $result = mysqli_query($conexion, $query);
-                if(mysqli_num_rows($result) > 0){
-                    $row = mysqli_fetch_array($result);
-                    $_SESSION['user'] = $row['user'];
-                    //cerrar la conexion a la base de datos a la vez que se cierra el script
-                    mysqli_close($conexion);
-                    header("Location:../inicio_admin/");
-                }else{
-                  echo '
-                  <script>
-                      alert("Inicie sesión primero");
-                      window.location = "./";
-                  </script>
-                ';
-                die();
-                }
-            }
-  }
-?>
+
 <!doctype html>
 <html lang="es">
 

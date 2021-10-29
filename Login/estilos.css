@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200&display=swap');
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Dosis', sans-serif;
+	
+}
+
+/*************CABECERA Y PIE DE PAGINA*******/
+.a{
+    
+    width: 100%;
+    background-color:#51C4D3;
+    color: #fff;
+    font-size: 20px;
+    padding-left: 10px;
+}
+.b{
+    width: 100%;
+    background-color:#132C33;
+    color: #fff;   
+    font-size: 20px; 
+    padding-left: 10px;
+}
+.pie{
+	text-align: center;
+	font-style: italic;
+	margin-top: 7.5%;
+    font-size: 18px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+/************CUERPO DE LOGIN*******/
+.titulo{
+	width: 45%;
+	margin-left: 27.5%;
+	margin-top: 45px;
+	height: 6vh;
+	border-radius: 5px;
+	background: rgba(0,0,0,0.4);
+    text-align: center;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+}
+.login{
+	width: 45%;
+	margin-left: 27.5%;
+	margin-top: 30px;
+	height: 55vh;
+	border-radius: 10px;
+	background: rgba(0,0,0,0.4);
+    color: #fff !important;
+    font-size: 20px;
+    font-weight: bold;
+}
+.icono{
+	text-align: center;
+	color: #fff;
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+.auxiliar{
+    width: 15%;
+    height: 40%;
+    color: #fff;
+    display: none;
+}
+
+
+@media	(max-width: 980px){
+    .a{
+        font-size: 17px;
+    }
+    .b{
+        font-size: 17px;
+    }
+    .titulo{
+        width: 80%;
+        margin-left: 10%;
+        margin-top: 50px;
+        height: 6vh;
+        border-radius: 5px;
+        background: rgba(0,0,0,0.4);
+        text-align: center;
+        color: #fff;
+        font-size: 30px;
+        font-weight: bold;
+    }
+    .login{
+        width: 80%;
+        margin-left: 10%;
+        margin-top: 50px;
+        height: 50vh;
+        border-radius: 10px;
+        background: rgba(0,0,0,0.4);
+        color: #fff !important;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .auxiliar{
+        display: block;
+    }
+}
