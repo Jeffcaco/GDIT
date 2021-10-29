@@ -35,7 +35,7 @@
                 
             </div>
 
-            <a class="btn " href="../Login/index.html" role="button" style="background-color: rgb(19, 44, 51); color:white">Log Out</a>
+            <a class="btn " href="../Login/cerrar_sesion.php" role="button" style="background-color: rgb(19, 44, 51); color:white">Log Out</a>
 
         </div>
     </nav>
