@@ -38,8 +38,13 @@
 <html>
 <head>
 	<title>GDIT | Logística</title>
+  <!--Developers 
+        @Castillo Cornejo, Jeffrey Bryan		
+        @Mitma Huaccha, Johan Valerio  	-->
+    <!-- Required meta tags -->
 	<script src="https://kit.fontawesome.com/31127b7562.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="estilos.css">
+  <link rel="icon" type="image" href="../gdit.jfif">
 	<meta charset="utf-8">
   <!--Bootstrap-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,8 +66,9 @@
 <body class="container" style="margin-bottom:0px; padding-bottom:0px;">
 	
 	<header>
-      <div class="a"><b>GDIT - Grupo de difusión e innovación tecnológica</b></div>
-      <div class="b"><b>Logística</b> | Administración de datos</div>
+      <div class="b">GDIT - Grupo de difusión e innovación tecnológica</div>
+      <div class="a">Logística | Administración de datos</div>
+      
 	</header>
 
 	<main>
@@ -98,11 +104,10 @@
 	<footer>
 		<div class="pie">
 			
-      <div class="b">.</div>
-      <div class="a"><p>© Todos los derechos reservados 
+      <p>© Todos los derechos reservados 
         <?php
           echo date("Y");
-        ?></p></div>
+        ?></p>
 		</div>
 	</footer>
 	
