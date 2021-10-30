@@ -181,7 +181,7 @@
       <th scope="col">Area</th>
       <th scope="col">Escuela</th>
       <th scope="col">Estado</th>
-     <th scope="col"><b>ACTUALIZAR</b></th>
+     <th scope="col"><b>EDITAR</b></th>
     </tr>
   </thead>
   <tbody class="myTable">
