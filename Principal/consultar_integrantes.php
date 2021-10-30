@@ -15,25 +15,21 @@
         @Castillo Cornejo, Jeffrey Bryan		
         @Mitma Huaccha, Johan Valerio  	-->
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/png" href="https://i.ibb.co/sPhKV5z/gdit-logo-online.jpg"/>
-
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/31127b7562.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 
 <body class="body">
-<nav class="navbar  navbar-bark navbar-expand-lg" style="background-color: rgb(18, 110, 130);"> <!-- rgb(18, 110, 130)-->
+<nav class="navbar  navbar-bark navbar-expand-lg fixed-top" style="background-color: rgb(18, 110, 130);"> <!-- rgb(18, 110, 130)-->
         <div class="container-fluid">
             <div>
                 <img src="https://i.ibb.co/sPhKV5z/gdit-logo-online.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" id="logo" alt="logo de veterinaria"
                     style="width: 60px;height: 60px;">
-                <a class="navbar-brand" href="#" style="color: white;">GDIT Logistica | Administración de datos</a>
-                <a class="btn" href="index.php" role="button" style=" background-color:rgb(81, 196, 211); color:white;">Volver</a>
+                <a class="navbar-brand" href="index.php" style="color: white;">GDIT Logistica | Administración de datos</a>
+                <a class="btn" href="index.php" role="button" style=" background-color:rgb(81, 196, 211); color:white;">Panel</a>
                 
             </div>
 
@@ -46,8 +42,9 @@
     <!--PANEL DE ACTIVIDADES-->
     <div class="container justify-content-center">
     <form action="./consultar_integrantes.php" method="POST">
-        <h2 style="text-align: center;">Sistema de consulta de integrantes</h2>
-        
+        <h2 style="text-align: center; margin-top: 8%;">Sistema de consulta de integrantes</h2>
+        <p style='text-align:center;'>En el siguiente modulo podra consultar y actualizar los integrantes del GDIT</p>
+
             <div class="row justify-content-center">
                 <div class="col-sm-4">
                     <div class="container">
@@ -67,7 +64,7 @@
                 <div class="col-sm-4">
                     <label for="" class="form-label">Valor de busqueda</label>
                     <br>
-                    <input type="text" name="valor" id="valor" class="form-control">
+                    <input type="text" name="valor" id="valor" class="form-control" placeholder="Todos por defecto">
                     <select name="valor_sexo" id="valor_sexo" class="form-select" style="display:none;">
                             <option value="Hombre">Hombre</option>
                             <option value="Mujer">Mujer</option>
@@ -100,18 +97,77 @@
                 </div>
             </div>
             <br>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center ">
                 
                 
-                <button type="submit" class="btn btn-success btn-lg">Consultar</button>
+                <button type="submit" class="btn btn-success btn-lg col-sm-3">Consultar</button>
                 
             </div>
         
     </form>
     </div>
   <br>
-    <div class="table-responsive">
-    <table class="table table-striped w-auto ">
+  <?php
+    //if(isset($_POST["nombre"])){
+       
+        include_once("../Database/conexion.php");
+                        
+            
+        $sql = "SELECT I.codAlumno as codAlumno,
+            I.nombres as nombres,
+            I.apellidos as apellidos,I.edad as edad,I.fechaNacimiento as fechaNacimiento,
+            I.sexo as sexo,I.telefono as telefono,I.correo as correo
+            ,I.estado as estado,A.nombre as Area,
+            E.nombre as Escuela
+            FROM integrantes AS I
+            LEFT JOIN area as A ON I.idarea=A.idarea
+            LEFT JOIN Escuela as E ON I.idescuela=E.idEscuela";
+        
+        echo "<div class='container'>";
+
+        if(isset($_POST["criterio"])){
+            $criterio = $_POST["criterio"];
+            if($criterio == "codAlumno"){
+                $criterio="I.codAlumno";
+                $valor = $_POST["valor"];
+            }else if($criterio == "nombres"){
+                $criterio="I.nombres";
+                $valor = $_POST["valor"];
+            }
+            else if($criterio == "sexo"){
+                $criterio = "I.sexo";
+                $valor = $_POST["valor_sexo"];
+            }else if($criterio == "Area"){
+                $criterio = "A.nombre";
+                $valor = $_POST["valor_area"];
+            }else if($criterio == "Escuela"){
+                $criterio = "E.nombre";
+                $valor = $_POST["valor_escuela"];
+            }
+            if($criterio == "estado"){
+                $criterio = "I.estado";
+                $valor = $_POST["valor_estado"];
+                $sql = $sql." WHERE ".$criterio."='".$valor."'";
+            }else{
+                $sql = $sql." WHERE ".$criterio." LIKE '%".$valor."%'";
+            }
+            if($valor==""){
+                $valor="Todos";
+            }
+            echo "<div class='alert alert-primary' role='alert' style='text-align:center;'>Consulta: ".$_POST['criterio']." = $valor</div>";
+            unset($_POST["criterio"]);
+        }
+        //die($sql);
+        //echo $sql;
+        $result = mysqli_query($conexion, $sql);
+        //cuantos reultados hay en la busqueda
+        $num_resultados = mysqli_num_rows($result);
+        echo "<div class='alert alert-success' role='alert' style='text-align:center;'> $num_resultados Integrantes encontrados.</div>";
+        
+        echo "</div>";
+  ?>
+    <div class="container-fluid table-responsive-lg" style="overflow-x:auto;">
+    <table class="table table-striped">
    <thead class="table" style="background-color:#D8E3E7">
     <tr>
       <th scope="col">Codigo Alumno</th>
@@ -125,64 +181,13 @@
       <th scope="col">Area</th>
       <th scope="col">Escuela</th>
       <th scope="col">Estado</th>
+     <th scope="col"><b>ACTUALIZAR</b></th>
     </tr>
   </thead>
   <tbody class="myTable">
         <?php
-            //if(isset($_POST["nombre"])){
-       
-            include_once("../Database/conexion.php");
-                        
             
-            $sql = "SELECT I.codAlumno as codAlumno,
-                I.nombres as nombres,
-                I.apellidos as apellidos,I.edad as edad,I.fechaNacimiento as fechaNacimiento,
-                I.sexo as sexo,I.telefono as telefono,I.correo as correo
-                ,I.estado as estado,A.nombre as Area,
-                E.nombre as Escuela
-                FROM integrantes AS I
-                LEFT JOIN area as A ON I.idarea=A.idarea
-                LEFT JOIN Escuela as E ON I.idescuela=E.idEscuela";
-            
-            if(isset($_POST["criterio"])){
-                $criterio = $_POST["criterio"];
-                if($criterio == "codAlumno"){
-                    $criterio="I.codAlumno";
-                    $valor = $_POST["valor"];
-                }else if($criterio == "nombres"){
-                    $criterio="I.nombres";
-                    $valor = $_POST["valor"];
-                }
-                else if($criterio == "sexo"){
-                    $criterio = "I.sexo";
-                    $valor = $_POST["valor_sexo"];
-                }else if($criterio == "Area"){
-                    $criterio = "A.nombre";
-                    $valor = $_POST["valor_area"];
-                }else if($criterio == "Escuela"){
-                    $criterio = "E.nombre";
-                    $valor = $_POST["valor_escuela"];
-                }
-                if($criterio == "estado"){
-                    $criterio = "I.estado";
-                    $valor = $_POST["valor_estado"];
-                    $sql = $sql." WHERE ".$criterio."='".$valor."'";
-                }else{
-                    $sql = $sql." WHERE ".$criterio." LIKE '%".$valor."%'";
-                }
-                if($valor==""){
-                    $valor="Todos";
-                }
-                echo "<div class='alert alert-primary' role='alert'>Consulta: ".$_POST['criterio']." = $valor</div>";
-                unset($_POST["criterio"]);
-            }
-            //die($sql);
-            //echo $sql;
-            $result = mysqli_query($conexion, $sql);
-            //cuantos reultados hay en la busqueda
-            $num_resultados = mysqli_num_rows($result);
-            echo "<div class='alert alert-success' role='alert' style='position:relative;'> $num_resultados Integrantes encontrados.</div>";
-            //mostrando informacion de los perros y detalle
+            //mostrando informacion de los resultados
             for ($i=0; $i <$num_resultados; $i++) {
             $row = mysqli_fetch_array($result); 
       
@@ -203,11 +208,15 @@
                     echo "<td>".$row['Escuela']."</td>";
                     echo "<td>";
                     if ($row['estado']=="ACTIVO") {
-                        echo "<span class='badge badge-success'>".$row['estado']."</span>";
+                        echo "<span class='badge bg-success'>".$row['estado']."</span>";
                     }else{
-                        echo "<span class='badge badge-danger'>".$row['estado']."</span>";
-                    }
-                    
+                        echo "<span class='badge bg-danger'>".$row['estado']."</span>";
+                    } //actualizar_integrantes.php?codigo=1
+                   
+                    echo "</td>"; 
+
+                    echo "<td>";
+                    echo "<a role='button' class='btn btn-warning' href='actualizar_integrantes.php?codigo=".$row['codAlumno']."'><img src='img/editar.png' alt='icono de editar usuario' height='18' width='18'></a>";
                     echo "</td>";
                    /*
                     echo "<td>";
@@ -228,7 +237,8 @@
 
     </div>
 
-
+    <br>
+    <br>
      <!--Pie de pagina-->
     <footer class="text-center text-white fixed-bottom" style="background-color: rgb(19, 44, 51); height:7%;">
 

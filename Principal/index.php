@@ -43,12 +43,12 @@
     <h1 style="text-align: center;">Administracion de Integrantes | Logistica</h1>
     <!--PANEL DE ACTIVIDADES-->
     <br>
-    <div class="container ">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="container">
                     <a role="button" class="btn btn-secondary btn-lg" href="registrar_integrantes.php">
-                        Registrar Integrante
+                        Registrar integrante
                     </a>
                 </div>
 
@@ -56,31 +56,25 @@
             <div class="col-md-4">
                 <div class="container">
                     <a role="button" class="btn btn-secondary btn-lg" href="consultar_integrantes.php">
-                        Consultar Usuarios
+                        Consultar | Actualizar
                     </a>
                 </div>
+            </div>
+            <div class="col-md-4">
+                <div class="container">
+                    <a role="button" class="btn btn-secondary btn-lg" href="../Dashboard/index.php">
+                        Ver Dashboards
+                    </a>
+                </div>
+
             </div>
 
         </div>
         <br>
         <div class="row justify-content-center">
-            <div class="col-md-4">
-                <div class="container">
-                    <a role="button" class="btn btn-secondary btn-lg" href="../Dashboard/index.php">
-                        Consultar Dashboards
-                    </a>
-                </div>
+           
 
-            </div>
-
-            <div class="col-md-4">
-                <div class="container">
-                    <a role="button" class="btn btn-secondary btn-lg" href="actualizar_integrantes.php">
-                        Actualizar Usuario
-                    </a>
-                </div>
-
-            </div>
+        
         </div>
         <br>
         <div class="row justify-content-center">
