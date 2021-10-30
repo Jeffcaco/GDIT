@@ -21,13 +21,13 @@
 
 <body>
 
-    <nav class="navbar  navbar-bark navbar-expand-lg" style="background-color: rgb(18, 110, 130);"> <!-- rgb(18, 110, 130)-->
+    <nav class="navbar  navbar-bark navbar-expand-lg fixed-top" style="background-color: rgb(18, 110, 130);"> <!-- rgb(18, 110, 130)-->
         <div class="container-fluid">
             <div>
                 <img src="https://i.ibb.co/sPhKV5z/gdit-logo-online.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" id="logo" alt="logo de veterinaria"
                     style="width: 60px;height: 60px;">
-                <a class="navbar-brand" href="#" style="color: white;">GDIT Logistica | Administración de datos</a>
-                <a class="btn" href="index.php" role="button" style=" background-color:rgb(81, 196, 211); color:white;">Volver</a>
+                <a class="navbar-brand" href="index.php" style="color: white;">GDIT Logistica | Administración de datos</a>
+                <a class="btn" href="index.php" role="button" style=" background-color:rgb(81, 196, 211); color:white;">Panel</a>
             </div>
 
             <a class="btn " href="../Login/cerrar_sesion.php" role="button" style="background-color: rgb(19, 44, 51); color:white">Log Out</a>
@@ -71,7 +71,7 @@
     unset($_POST['codigo']);
  }
 ?>
-    <h2 class="text-center">Registro de integrantes del GDIT</h2>
+    <h2 class="text-center" style="margin-top: 8%;">Registro de integrantes del GDIT</h2>
      <!-- Region del formulario-->
      <div class="container">
         <form class="text-center justify-content-center" method="POST" action="registrar_integrantes.php">
@@ -89,7 +89,7 @@
                 <div class="col-md-4">
                     <div class="container">
                         <label for="" class="form-label">Codigo de alumno</label>
-                        <input type="number" name="codigo" id="codigo" class="form-control" value="0" maxlength="8" required>
+                        <input type="number" name="codigo" id="codigo" class="form-control" placeholder="Codigo de alumno" maxlength="8" required>
                     </div>
                 </div>
             </div>
