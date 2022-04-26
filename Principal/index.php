@@ -12,7 +12,8 @@
     <title>Home</title>
     <!--Developers 
         @Castillo Cornejo, Jeffrey Bryan		
-        @Mitma Huaccha, Johan Valerio  	-->
+        @Mitma Huaccha, Johan Valerio  	
+        @Porras Muñoz, Bruno Franchesco -->
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
