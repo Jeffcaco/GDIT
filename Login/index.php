@@ -1,5 +1,6 @@
 <?php
      //recoger sesiones activas
+     error_reporting(0);
      session_start();
      if(isset($_SESSION['user'])){
          header("Location:../Principal/");
@@ -31,7 +32,7 @@
    
                   echo '
                   <script>
-                      alert("Inicie sesión primero");
+                      alert("Verifique sus datos y vuelva a intentar");
                       window.location = "./";
                   </script>
                 ';
@@ -82,7 +83,7 @@
 			</div>
 			<div class="form-group">
                 
-                <select class="form-control" name="tipo">
+                <select class="form-control" name="tipo" required="true">
                     <option value="">-- Seleccionar tipo --</option>
                     <option value="admi">Administrador</option>
                     <option value="usu">Usuario</option> 
