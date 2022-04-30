@@ -20,26 +20,15 @@
                         <label for="name" class="form-label">Nombre de dashboard</label>
                         <input type="text" class="form-control" name="nombre" required='true' autofocus>
 
+                        <br>
+
                         <label for="recipient-name" class="form-label">URL de dashboard</label>
                         <input type="text" class="form-control" name="link" required='true' autofocus>
 
-                        <label for="password" class="form-label">Contraseña de dashboard</label>
-                        <input type="text" class="form-control" name="password" required='true' autofocus maxlength="8">
+                        <br>
 
-                        <label for="recipient-name" class="col-form-label">Area</label>           
-
-                        <select name="area" class="custom-select">
-                            <?php
-                            include_once("../../Database/conexion.php");
-                            $query_areas = "SELECT * FROM Area";
-                            $result3 = mysqli_query($conexion, $query_areas);
-                            $num_areas = mysqli_num_rows($result3);
-                            ?>
-                            <?php for ($a = 0; $a < $num_areas; $a++) {
-                                $row_areas = mysqli_fetch_array($result3); ?>
-                                <option value=<?php echo $row_areas['id_area']; ?>><?php echo $row_areas['nombre_area']; ?></option>
-                            <?php } ?>
-                        </select>
+                        <?php $fecha=date('Y-d-m'); ?>
+                        <label for="date" class="form-label"><i>Fecha de registro</i> : <b><?php echo $fecha ?></b></label>
 
                     </div>
 

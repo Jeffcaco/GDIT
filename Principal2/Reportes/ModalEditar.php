@@ -1,6 +1,6 @@
 
 <!--ventana para Update--->
-<div class="modal fade" id="editChildresn<?php echo $reporte['id_dashboard']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="editReporte<?php echo $reporte['id_dashboard']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-dark">
@@ -25,12 +25,8 @@
             <label for="recipient-name" class="col-form-label">URL de dashboard</label>
             <input type="text" name="link" class="form-control" value="<?php echo $reporte['link_dashboard']; ?>" required="true">
 
-            <label for="recipient-name" class="col-form-label">Password de dashboard</label>
-            <input type="text" name="password" class="form-control" value="<?php echo $reporte['password_dashboard']; ?>" required="true" maxlength="8">
-
             <br>
-            <label for="recipient-name" class="col-form-label" style="float: right;">Area: <i class="text-danger"><b><?php echo $reporte['nombre_area']; ?></b></i></label>
-            <!--<input type="text" name="nombre" class="form-control" value="<?php //echo $reporte['nombre_area']; ?>" required="true">-->
+            <label for="recipient-name" class="col-form-label">Fecha de registro: <b><?php echo $reporte['fecha']; ?></b></label>
           </div>
 
         </div>

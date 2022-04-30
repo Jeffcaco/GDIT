@@ -172,7 +172,7 @@ $row0 = mysqli_fetch_array($result0);
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright © Jeffcaco, <?php echo date("Y"); ?></div>
+                        <div class="text-muted">Copyright © Gerencia de Logística, <?php echo date("Y"); ?></div>
                         <div>
                             <a href="#">Derechos de autor reservados</a>
                         </div>
@@ -193,31 +193,6 @@ $row0 = mysqli_fetch_array($result0);
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="assets/demo/datatables-demo.js"></script>
-
-    <!-- The Modal -->
-    <div class="modal fade" id="modelo">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header bg-dark text-light">
-                    <h4 class="modal-title">Modelo relación bd</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <img src="../../Img/ModeloRelacion.PNG" alt="" width="100%">
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
 </body>
 

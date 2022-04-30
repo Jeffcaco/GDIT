@@ -168,7 +168,7 @@ $row0 = mysqli_fetch_array($result0);
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright © Jeffcaco, <?php echo date("Y"); ?></div>
+                        <div class="text-muted">Copyright © Gerencia de Logística, <?php echo date("Y"); ?></div>
                         <div>
                             <a href="#">Derechos de autor reservados</a>
                         </div>

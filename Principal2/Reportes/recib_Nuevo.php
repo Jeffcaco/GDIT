@@ -2,18 +2,16 @@
 include_once("../../Database/conexion.php");
 $nombre      = $_REQUEST['nombre'];
 $link      = $_REQUEST['link'];
-$password  = $_REQUEST['password'];
-$area      = $_REQUEST['area'];
 
+$fecha=date("Y-m-d");
 
 $QueryInsert = ("INSERT INTO Dashboard(
-    nombre_dashboard,link_dashboard,password_dashboard,id_area_dashboard
+    nombre_dashboard, fecha, link_dashboard
 )
 VALUES (
     '".$nombre. "',
-    '".$link. "',
-    '".$password. "',
-    '".$area. "'
+    '".$fecha."',
+    '".$link. "'
 )");
 $insert = mysqli_query($conexion, $QueryInsert);
 mysqli_close($conexion);
