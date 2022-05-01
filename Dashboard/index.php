@@ -32,30 +32,7 @@
     <?php
         include('../Principal/navbar.php');
     ?>
-    <!--
-    <nav class="navbar  navbar-bark navbar-expand-lg" style="background-color: rgb(18, 110, 130);">
-        <div class="container-fluid">
-            <div>
-                <img src="https://i.ibb.co/sPhKV5z/gdit-logo-online.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" id="logo" alt="logo de veterinaria"
-                    style="width: 60px;height: 60px;">
-                <a class="navbar-brand" href="#" style="color: white;">GDIT Logística | Dashboards</a>
-                <a class="btn" href="../Principal/" role="button" style=" background-color:rgb(81, 196, 211); color:white;">Volver</a>
-            </div>
-
-            <div class="dropdown">
-              <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" style=" background-color:rgb(81, 196, 211); color:white;">
-                Seleccionar dashboard
-              </button>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="index.php">Mapeo de habilidades</a>
-                <a class="dropdown-item" href="#">Nombre dashboard 2</a>
-                <a class="dropdown-item" href="#">Nombre dashboard 3</a>
-              </div>
-            </div>
-
-        </div>
-    </nav>
-    -->
+    
     <div class="super_container">
         <div class="sidebar">
             <ul>
