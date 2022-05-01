@@ -22,11 +22,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/31127b7562.js" crossorigin="anonymous"></script>
+    <!--Own styles-->
+	<link rel="stylesheet" href="../Principal/styles/index.css">
 	
 </head>
 
 <body class="body">
-    <nav class="navbar  navbar-bark navbar-expand-lg" style="background-color: rgb(18, 110, 130);"> <!-- rgb(18, 110, 130)-->
+
+    <?php
+        include('../Principal/navbar.php');
+    ?>
+    <!--
+    <nav class="navbar  navbar-bark navbar-expand-lg" style="background-color: rgb(18, 110, 130);">
         <div class="container-fluid">
             <div>
                 <img src="https://i.ibb.co/sPhKV5z/gdit-logo-online.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" id="logo" alt="logo de veterinaria"
@@ -48,21 +55,52 @@
 
         </div>
     </nav>
-
-    <div>
-      <iframe width="100%" height="630" src="https://app.powerbi.com/view?r=eyJrIjoiNWVhZTA5YmEtNTMyNS00NmM5LTg2YjgtOTAyM2MzYjNiZmFkIiwidCI6ImFmMTA3NDlkLTNlMWQtNGQxMy04NmQ5LTg2ZmJlYTRlY2I0OSJ9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>
-    </div>
-
-
-     <!--Pie de pagina-->
-    <footer class="text-center text-white fixed-bottom" style="background-color: rgb(19, 44, 51); height:7%;">
-
-        <div class="text-center p-3" style="background-color: rgba(5, 1, 1, 0.2);">
-            © 2021 Copyright. Propiedad del Area de Administracion de datos | Grupo de Investigacio e innovacion tecnologica GDIT:
-            <a class="text-white" href="https://mdbootstrap.com/">GDIT Asociate</a>
+    -->
+    <div class="super_container">
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="../Principal/index.php">
+                        <span class="icon"><ion-icon name="home"></ion-icon></span>
+                        <span class="sidebar_text">Inicio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Principal/registrar_integrantes.php">
+                        <span class="icon"><ion-icon name="person-add"></ion-icon></span>
+                        <span class="sidebar_text">Registrar integrante</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Principal/consultar_integrantes.php">
+                        <span class="icon"><ion-icon name="server"></ion-icon></span>
+                        <span class="sidebar_text">Consultar/Actualizar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon icon_active"><ion-icon name="documents"></ion-icon></span>
+                        <span class="sidebar_text icon_active">Ver dashboards</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Login/cerrar_sesion.php">
+                        <span class="icon"><ion-icon name="log-out"></ion-icon></span>
+                        <span class="sidebar_text">Cerrar sesión</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <!-- Copyright -->
-    </footer>
+
+        <div class="content">
+            <div>
+                <iframe width="100%" height="730" src="https://app.powerbi.com/view?r=eyJrIjoiNWVhZTA5YmEtNTMyNS00NmM5LTg2YjgtOTAyM2MzYjNiZmFkIiwidCI6ImFmMTA3NDlkLTNlMWQtNGQxMy04NmQ5LTg2ZmJlYTRlY2I0OSJ9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>
+            </div>
+        </div>
+    </div>
+    <?php
+        include('../Principal/footer.php');
+    ?>
     
    
     <!-- Optional JavaScript -->
@@ -70,6 +108,13 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <!--Own script-->
+    <script src="../Principal/scripts/sidebar.js"></script>
+
+    <!--Íconos-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

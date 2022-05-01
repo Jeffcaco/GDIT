@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+:root {
+    --color_card: #4A7D9F;
+    --blanco: #FFF;
+    --border_soft: #A3A3A3;
+    --nav_color: rgb(18, 110, 130);
+    --footer_color: #1a3136;
+}
+.super_container{
+    position: relative;
+    width: 100%;
+}
+/*Sidebar*/
+.sidebar {
+    position: fixed;
+    width: 300px;
+    height: 100vh;
+    background: var(--nav_color);
+    border-left: 10px solid var(--nav_color);
+    transition: 0.6s;
+    overflow: hidden;
+}
+.sidebar ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+    width: 100%;
+}
+.sidebar ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+.sidebar ul li:hover {
+    background: #FFF;
+}
+.sidebar ul li:nth-child(1) {
+    margin-top: 35px;
+}
+.sidebar ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: #FFF;
+}
+.sidebar ul li:hover a{
+    color: var(--nav_color);
+}
+.sidebar ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 70px;
+    text-align: center;
+}
+.sidebar ul li a .icon ion-icon {
+    font-size: 25px;
+}
+.sidebar ul li a .sidebar_text {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+.sidebar ul li:hover a::before  {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px #FFF;
+    pointer-events: none;
+}
+.sidebar ul li:hover a::after  {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px #FFF;
+    pointer-events: none;
+}
+.menu_icon {
+    position: relative;
+    color: #FFF;
+    top: 10px;
+    padding: 0 10px 0 0;
+    font-size: 25px;
+    cursor: pointer;
+}
+/*Sección activa*/
+.icon_active {
+    color: var(--footer_color);
+    font-weight: 500;
+}
+/*Comprimir sidebar*/
+.sidebar.active {
+    width: 80px;
+}
+
+/*Content*/
+.content {
+    position: relative;
+    width: calc(100% - 300px);
+    left: 300px;
+    padding: 20px;
+    transition: 0.6s;
+}
+.content.active { 
+    position: relative;
+    width: calc(100% - 80px);
+    left: 80px;
+    transition: 0.6s;
+}
+
+/*Inside content*/
+.main_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.mv_container {
+    width: 48%;
+    min-width: 400px;
+    margin: 10px 1%;
+    padding: 15px;
+    flex: 1;
+    border: solid var(--border_soft) 1px;
+}
+
+.areas_container {
+    display: flex;
+    flex-direction: column;
+}
+.areas_container > h3 {
+    align-self: center;
+}
+
+.areas_sub_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.areas_element {
+    margin: 30px;
+    padding: 20px;
+    width: 45%;
+    border-radius: 10px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.12);
+}
+.card_area {
+    height: 45%;
+    border-radius: 10px;
+    background-color: var(--nav_color);
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+}
+.card_area > p {
+    color: var(--blanco);
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+}
+
+.areas_members {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 10px 0;
+}
+.areas_element > a > p {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/*Carrousel*/
+.img_container {
+    width: 100%;
+    overflow: hidden;
+}
+.slider{
+    display: flex;
+    width: 300%;
+    height: 410px;
+    margin-left: -100%;
+}
+
+.img_carrousel {
+    display: block;
+    object-fit: cover;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}

@@ -77,25 +77,18 @@
     <link rel="icon" type="image/png" href="https://i.ibb.co/sPhKV5z/gdit-logo-online.jpg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!--Own styles-->
+	<link rel="stylesheet" href="styles/index.css">
 </head>
 
 <body class="body">
-<nav class="navbar  navbar-bark navbar-expand-lg fixed-top" style="background-color: rgb(18, 110, 130);"> <!-- rgb(18, 110, 130)-->
-        <div class="container-fluid">
-            <div>
-                <img src="https://i.ibb.co/sPhKV5z/gdit-logo-online.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" id="logo" alt="logo de veterinaria"
-                    style="width: 60px;height: 60px;">
-                <a class="navbar-brand" href="index.php" style="color: white;">GDIT Logistica | Administración de datos</a>
-                <a class="btn" href="index.php" role="button" style=" background-color:rgb(81, 196, 211); color:white;">Panel</a>
-                
-            </div>
 
-            <a class="btn " href="../Login/cerrar_sesion.php" role="button" style="background-color: rgb(19, 44, 51); color:white">Log Out</a>
+    <?php
+        include('navbar.php');
+    ?>
+    <div class="super_container">
 
-        </div>
-    </nav>
-
-    <h2 style="text-align: center; margin-top: 8%;">Actualizar integrantes</h1>
+    <h2 style="text-align: center; margin-top: 2%;">Actualizar integrantes</h1>
 
     <?php
     if(isset($_POST['actualizar'])){
@@ -266,18 +259,13 @@
         </form>
 
     </div>
+    </div>
         <br>
     
 
-     <!--Pie de pagina-->
-    <footer class="text-center text-white fixed-bottom" style="background-color: rgb(19, 44, 51); height:7%;">
-
-        <div class="text-center p-3" style="background-color: rgba(5, 1, 1, 0.2);">
-            © 2021 Copyright. Propiedad del Area de Administracion de datos | Grupo de Investigacio e innovacion tecnologica GDIT:
-            <a class="text-white" href="https://mdbootstrap.com/">GDIT Asociate</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
+    <?php
+        require('footer.php');
+    ?>
     
    
     <!-- Optional JavaScript -->
@@ -285,6 +273,14 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!--Own script-->
+    <script src="./scripts/sidebar.js"></script>
+
+    <!--Íconos-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 
 </html>
