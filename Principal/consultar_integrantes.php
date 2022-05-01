@@ -285,7 +285,6 @@
 
     <!--Own script-->
     <script src="./scripts/sidebar.js"></script>
-    <script src="./scripts/carousel.js"></script>
 
     <!--Íconos-->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
