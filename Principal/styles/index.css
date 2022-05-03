@@ -12,6 +12,9 @@
     --nav_color: rgb(18, 110, 130);
     --footer_color: #1a3136;
 }
+body {
+    min-width: 545px;
+}
 .super_container{
     position: relative;
     width: 100%;
@@ -207,7 +210,7 @@
 .slider{
     display: flex;
     width: 300%;
-    height: 410px;
+    height: 480px;
     margin-left: -100%;
 }
 
@@ -217,4 +220,22 @@
     margin: 0;
     width: 100%;
     height: 100%;
+}
+
+/*Responsive design*/
+@media (max-width: 990px) {
+    .sidebar {
+        left: -300px;
+        transition: all 0.5s;
+    }
+    .sidebar.active {
+        left: 0;
+    }
+    .content {
+        width: 100%;
+        left: 0;
+    }
+    .content.active {
+        left: 80px;
+    }
 }
