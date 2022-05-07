@@ -191,7 +191,7 @@
                         <!--Input de la fecha de nacimiento-->
                         <label for="" class="form-label">Fecha de nacimiento</label>
                         <input type="date" name="nacimiento" id="nacimiento" class="form-control" value=<?= $alumno['fechaNacimiento']?> required>
-
+                        <br>
                         <!--Input del correo-->
                         <label for="" class="form-label">Correo</label>
                         <input type="mail" name="correo" id="correo" class="form-control" value=<?= $alumno['correo']?> required>
@@ -241,18 +241,30 @@
                         <select name="subarea" id="subarea" class="form-select">
                         
                         <?php
-                        if($alumno['Subarea']=="Gerencia de Logística"){
-                            echo "<option value=1 selected>Logistica</option>";
-                            echo "<option value=2>Desarrollo de proyectos</option>";
-                            echo "<option value=3>Marketing</option>";
-                        }else if($alumno['Subarea']=="Gerencia de Desarrollo de Proyectos"){
-                            echo "<option value=1>Logistica</option>";
-                            echo "<option value=2 selected>Desarrollo de proyectos</option>";
-                            echo "<option value=3>Marketing</option>";
-                        }else if($alumno['Subarea']=="Gerencia de Comunicaciones"){
-                            echo "<option value=1>Logistica</option>";
-                            echo "<option value=2>Desarrollo de proyectos</option>";
-                            echo "<option value=3 selected>Marketing</option>";
+                        if($alumno['Area']=="Gerencia de Logística"){
+                            if($alumno['Subarea']=="Gestión de datos y control organizacional"){
+                                echo "<option value=5 selected>Gestión de datos y control organizacional</option>";
+                                echo "<option value=6>Relaciones Públicas</option>";
+                            } if($alumno['Subarea']=="Relaciones Públicas"){
+                                echo "<option value=5>Gestión de datos y control organizacional</option>";
+                                echo "<option value=6 selected>Relaciones Públicas</option>";
+                            }
+                        }else if($alumno['Area']=="Gerencia de Desarrollo de Proyectos"){
+                            if($alumno['Subarea']=="Planificación, Control y Evaluación de Proyectos PCEP"){
+                                echo "<option value=3 selected>Planificación, Control y Evaluación de Proyectos PCEP</option>";
+                                echo "<option value=4>Capacitación, Desarrollo y Mejora de Procesos CDMP</option>";
+                            } if($alumno['Subarea']=="Capacitación, Desarrollo y Mejora de Procesos CDMP"){
+                                echo "<option value=3>Planificación, Control y Evaluación de Proyectos PCEP</option>";
+                                echo "<option value=4 selected>Capacitación, Desarrollo y Mejora de Procesos CDMP</option>";
+                            }
+                        }else if($alumno['Area']=="Gerencia de Comunicaciones"){
+                            if($alumno['Subarea']=="Marketing"){
+                                echo "<option value=1 selected>Marketing</option>";
+                                echo "<option value=2>Comunicación y Desarrollo Interno</option>";
+                            } if($alumno['Subarea']=="Comunicación y Desarrollo Interno"){
+                                echo "<option value=1>Marketing</option>";
+                                echo "<option value=2 selected>Comunicación y Desarrollo Interno</option>";
+                            }
                         }else{
                             echo "<option value=4>Otro</option>";
                         }
@@ -309,6 +321,8 @@
 
     <!--Own script-->
     <script src="./scripts/sidebar.js"></script>
+    <script src="./scripts/changeInput.js"></script>
+
 
     <!--Íconos-->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
