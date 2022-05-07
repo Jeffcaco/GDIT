@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;800&display=swap');
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 :root {
     --color_card: #4A7D9F;
@@ -115,7 +115,7 @@ body {
 /*Sección activa*/
 .icon_active {
     color: var(--footer_color);
-    font-weight: 500;
+    font-weight: 700;
 }
 /*Comprimir sidebar*/
 .sidebar.active {
@@ -201,7 +201,9 @@ body {
     text-align: center;
     margin-bottom: 10px;
 }
-
+.mv_element > p {
+    text-align: justify;
+}
 /*Carrousel*/
 .img_container {
     width: 100%;
@@ -209,7 +211,7 @@ body {
 }
 .slider{
     display: flex;
-    width: 300%;
+    width: 400%;
     height: 480px;
     margin-left: -100%;
 }

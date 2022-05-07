@@ -129,8 +129,7 @@
                         <div class="row justify-content-center ">
                             
                             
-                            <button type="submit" class="btn btn-success btn-lg col-sm-3">Consultar</button>
-                            
+                            <button type="submit" class="btn btn-success btn-lg col-sm-3 mb-3">Consultar</button>
                         </div>
                     
                 </form>
@@ -138,18 +137,23 @@
             <?php
               //if(isset($_POST["nombre"])){
                  
-                  include_once("../Database/conexion.php");
+                    include_once("../Database/conexion.php");
                                   
-                      
-                  $sql = "SELECT I.codAlumno as codAlumno,
-                      I.nombres as nombres,
-                      I.apellidos as apellidos,I.edad as edad,I.fechaNacimiento as fechaNacimiento,
-                      I.sexo as sexo,I.telefono as telefono,I.correo as correo
-                      ,I.estado as estado,A.nombre as Area,
-                      E.nombre as Escuela
-                      FROM integrantes AS I
-                      LEFT JOIN area as A ON I.idarea=A.idarea
-                      LEFT JOIN Escuela as E ON I.idescuela=E.idEscuela";
+                    $sql = "SELECT I.codAlumno as codAlumno, 
+                    I.nombres as nombres, 
+                    I.apellidos as apellidos, 
+                    I.edad as edad, 
+                    I.fechaNacimiento as fechaNacimiento, 
+                    I.sexo as sexo, 
+                    I.telefono as telefono, 
+                    I.correo as correo, 
+                    E.nombre AS Escuela, (
+                        SELECT nombre FROM area AS A WHERE A.idarea = S.idarea
+                    ) AS Area, 
+                    I.estado as estado
+                    FROM integrantes AS I
+                    LEFT JOIN Escuela AS E ON E.idEscuela = I.idescuela
+                    LEFT JOIN subarea AS S ON I.idsubarea = S.idsubarea";
                   
                   echo "<div class='container'>";
           
