@@ -43,16 +43,23 @@
         if(isset($_REQUEST['codigo'])){
             $codigo=$_REQUEST['codigo'];
             include_once("../Database/conexion.php");
-            $sql="SELECT I.codAlumno as codAlumno,
-                        I.nombres as nombres,
-                        I.apellidos as apellidos,I.edad as edad,I.fechaNacimiento as fechaNacimiento,
-                        I.sexo as sexo,I.telefono as telefono,I.correo as correo
-                        ,I.estado as estado,A.nombre as Area,
-                        E.nombre as Escuela
-                        FROM integrantes AS I
-                        LEFT JOIN area as A ON I.idarea=A.idarea
-                        LEFT JOIN Escuela as E ON I.idescuela=E.idEscuela
-                        WHERE I.codAlumno='$codigo'";
+            $sql="SELECT I.codAlumno as codAlumno, 
+                I.nombres as nombres, 
+                I.apellidos as apellidos, 
+                I.edad as edad, 
+                I.fechaNacimiento as fechaNacimiento, 
+                I.sexo as sexo, 
+                I.telefono as telefono, 
+                I.correo as correo, 
+                E.nombre AS Escuela, (
+                    SELECT nombre FROM area AS A WHERE A.idarea = S.idarea
+                ) AS Area, 
+                S.nombre AS Subarea, 
+                I.estado as estado
+                FROM integrantes AS I
+                LEFT JOIN Escuela AS E ON E.idEscuela = I.idescuela
+                LEFT JOIN subarea AS S ON I.idsubarea = S.idsubarea
+                WHERE I.codAlumno='$codigo'";
             $resultado=mysqli_query($conexion,$sql);
             //obtengo solo el primer registro de los alumnos
             $alumno=mysqli_fetch_array($resultado);
@@ -185,7 +192,7 @@
                         <label for="" class="form-label">Fecha de nacimiento</label>
                         <input type="date" name="nacimiento" id="nacimiento" class="form-control" value=<?= $alumno['fechaNacimiento']?> required>
 
-                        <!--Input de la fecha de nacimiento-->
+                        <!--Input del correo-->
                         <label for="" class="form-label">Correo</label>
                         <input type="mail" name="correo" id="correo" class="form-control" value=<?= $alumno['correo']?> required>
 
@@ -203,20 +210,46 @@
                         <label for="" class="form-label">Edad</label>
                         <input type="numeric" name="edad" id="edad" class="form-control"value=<?= $alumno['edad']?> required>
                         <br>
-                       <!-- selector del Estado civil-->
+                       <!--Gerencia del miembro-->
                        <label for="" class="form-label">Area de gerencia</label>
                         <select name="area" id="area" class="form-select">
 
                         <?php
-                        if($alumno['Area']=="Logistica"){
+                        if($alumno['Area']=="Gerencia de Logística"){
                             echo "<option value=1 selected>Logistica</option>";
                             echo "<option value=2>Desarrollo de proyectos</option>";
                             echo "<option value=3>Marketing</option>";
-                        }else if($alumno['Area']=="Desarrollo de proyectos"){
+                        }else if($alumno['Area']=="Gerencia de Desarrollo de Proyectos"){
                             echo "<option value=1>Logistica</option>";
                             echo "<option value=2 selected>Desarrollo de proyectos</option>";
                             echo "<option value=3>Marketing</option>";
-                        }else if($alumno['Area']=="Marketing"){
+                        }else if($alumno['Area']=="Gerencia de Comunicaciones"){
+                            echo "<option value=1>Logistica</option>";
+                            echo "<option value=2>Desarrollo de proyectos</option>";
+                            echo "<option value=3 selected>Marketing</option>";
+                        }else{
+                            echo "<option value=4>Otro</option>";
+                        }
+                        
+                           
+                        ?>
+                     
+                    </select>
+                    <br>
+                    <!--Area del miembro-->
+                    <label for="" class="form-label">SubArea de gerencia</label>
+                        <select name="subarea" id="subarea" class="form-select">
+                        
+                        <?php
+                        if($alumno['Subarea']=="Gerencia de Logística"){
+                            echo "<option value=1 selected>Logistica</option>";
+                            echo "<option value=2>Desarrollo de proyectos</option>";
+                            echo "<option value=3>Marketing</option>";
+                        }else if($alumno['Subarea']=="Gerencia de Desarrollo de Proyectos"){
+                            echo "<option value=1>Logistica</option>";
+                            echo "<option value=2 selected>Desarrollo de proyectos</option>";
+                            echo "<option value=3>Marketing</option>";
+                        }else if($alumno['Subarea']=="Gerencia de Comunicaciones"){
                             echo "<option value=1>Logistica</option>";
                             echo "<option value=2>Desarrollo de proyectos</option>";
                             echo "<option value=3 selected>Marketing</option>";

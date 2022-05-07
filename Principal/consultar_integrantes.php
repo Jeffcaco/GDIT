@@ -104,11 +104,11 @@
                                         <option value="">Prefiero no decirlo</option>
                                         <option value="">No me decido</option>
                                 </select>
+
                                 <select name="valor_area" id="valor_area" class="form-select"  style="display:none;">
                                 <option value="Logistica">Logistica</option>
                                 <option value="Desarrollo de proyectos">Desarrollo de proyectos</option>
                                 <option value="Marketing">Marketing</option>
-                                
                                 </select>
 
                                 <select name="valor_escuela" id="valor_escuela" style="display:none;" class="form-select">
@@ -140,20 +140,21 @@
                     include_once("../Database/conexion.php");
                                   
                     $sql = "SELECT I.codAlumno as codAlumno, 
-                    I.nombres as nombres, 
-                    I.apellidos as apellidos, 
-                    I.edad as edad, 
-                    I.fechaNacimiento as fechaNacimiento, 
-                    I.sexo as sexo, 
-                    I.telefono as telefono, 
-                    I.correo as correo, 
-                    E.nombre AS Escuela, (
-                        SELECT nombre FROM area AS A WHERE A.idarea = S.idarea
-                    ) AS Area, 
-                    I.estado as estado
-                    FROM integrantes AS I
-                    LEFT JOIN Escuela AS E ON E.idEscuela = I.idescuela
-                    LEFT JOIN subarea AS S ON I.idsubarea = S.idsubarea";
+                        I.nombres as nombres, 
+                        I.apellidos as apellidos, 
+                        I.edad as edad, 
+                        I.fechaNacimiento as fechaNacimiento, 
+                        I.sexo as sexo, 
+                        I.telefono as telefono, 
+                        I.correo as correo, 
+                        E.nombre AS Escuela, (
+                            SELECT nombre FROM area AS A WHERE A.idarea = S.idarea
+                        ) AS Area,
+                        S.nombre AS Subarea, 
+                        I.estado as estado
+                        FROM integrantes AS I
+                        LEFT JOIN Escuela AS E ON E.idEscuela = I.idescuela
+                        LEFT JOIN subarea AS S ON I.idsubarea = S.idsubarea";
                   
                   echo "<div class='container'>";
           
@@ -211,6 +212,7 @@
                 <th scope="col">Telefono</th>
                 <th scope="col">Correo</th>
                 <th scope="col">Area</th>
+                <th scope="col">SubArea</th>
                 <th scope="col">Escuela</th>
                 <th scope="col">Estado</th>
                <th scope="col"><b>EDITAR</b></th>
@@ -237,6 +239,7 @@
                               echo "<td>".$row['correo']."</td>";
           
                               echo "<td>".$row['Area']."</td>";
+                              echo "<td>".$row['Subarea']."</td>";
                               echo "<td>".$row['Escuela']."</td>";
                               echo "<td>";
                               if ($row['estado']=="ACTIVO") {
