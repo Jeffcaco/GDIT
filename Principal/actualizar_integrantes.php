@@ -14,7 +14,7 @@
             $nacimiento = $_POST['nacimiento'];
             $correo= $_POST['correo'];
             $edad= $_POST['edad'];
-            $idarea= $_POST['area'];
+            $idsubarea= $_POST['subarea'];
             $idescuela= $_POST['escuela'];
 
             $estado = $_POST['estado'];
@@ -30,7 +30,7 @@
                          telefono='$telefono',
                          correo='$correo',
                          estado='$estado',
-                         idarea=$idarea, idescuela=$idescuela
+                         idsubarea=$idsubarea, idescuela=$idescuela
                         WHERE codAlumno='$codigo'";
                         //echo $query;
                //die ($query);
@@ -43,16 +43,23 @@
         if(isset($_REQUEST['codigo'])){
             $codigo=$_REQUEST['codigo'];
             include_once("../Database/conexion.php");
-            $sql="SELECT I.codAlumno as codAlumno,
-                        I.nombres as nombres,
-                        I.apellidos as apellidos,I.edad as edad,I.fechaNacimiento as fechaNacimiento,
-                        I.sexo as sexo,I.telefono as telefono,I.correo as correo
-                        ,I.estado as estado,A.nombre as Area,
-                        E.nombre as Escuela
-                        FROM integrantes AS I
-                        LEFT JOIN area as A ON I.idarea=A.idarea
-                        LEFT JOIN Escuela as E ON I.idescuela=E.idEscuela
-                        WHERE I.codAlumno='$codigo'";
+            $sql="SELECT I.codAlumno as codAlumno, 
+                I.nombres as nombres, 
+                I.apellidos as apellidos, 
+                I.edad as edad, 
+                I.fechaNacimiento as fechaNacimiento, 
+                I.sexo as sexo, 
+                I.telefono as telefono, 
+                I.correo as correo, 
+                E.nombre AS Escuela, (
+                    SELECT nombre FROM area AS A WHERE A.idarea = S.idarea
+                ) AS Area, 
+                S.nombre AS Subarea, 
+                I.estado as estado
+                FROM integrantes AS I
+                LEFT JOIN Escuela AS E ON E.idEscuela = I.idescuela
+                LEFT JOIN subarea AS S ON I.idsubarea = S.idsubarea
+                WHERE I.codAlumno='$codigo'";
             $resultado=mysqli_query($conexion,$sql);
             //obtengo solo el primer registro de los alumnos
             $alumno=mysqli_fetch_array($resultado);
@@ -77,25 +84,46 @@
     <link rel="icon" type="image/png" href="https://i.ibb.co/sPhKV5z/gdit-logo-online.jpg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!--Own styles-->
+	<link rel="stylesheet" href="styles/index.css">
 </head>
 
 <body class="body">
-<nav class="navbar  navbar-bark navbar-expand-lg fixed-top" style="background-color: rgb(18, 110, 130);"> <!-- rgb(18, 110, 130)-->
-        <div class="container-fluid">
-            <div>
-                <img src="https://i.ibb.co/sPhKV5z/gdit-logo-online.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" id="logo" alt="logo de veterinaria"
-                    style="width: 60px;height: 60px;">
-                <a class="navbar-brand" href="index.php" style="color: white;">GDIT Logistica | Administración de datos</a>
-                <a class="btn" href="index.php" role="button" style=" background-color:rgb(81, 196, 211); color:white;">Panel</a>
-                
-            </div>
 
-            <a class="btn " href="../Login/cerrar_sesion.php" role="button" style="background-color: rgb(19, 44, 51); color:white">Log Out</a>
-
+    <?php
+        include('navbar.php');
+    ?>
+    <div class="super_container">
+    <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="index.php">
+                        <span class="icon"><ion-icon name="home"></ion-icon></span>
+                        <span class="sidebar_text">Inicio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon icon_active"><ion-icon name="server"></ion-icon></span>
+                        <span class="sidebar_text icon_active">Consultar/Actualizar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Dashboard/index.php">
+                        <span class="icon"><ion-icon name="documents"></ion-icon></span>
+                        <span class="sidebar_text">Ver dashboards</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Login/cerrar_sesion.php">
+                        <span class="icon"><ion-icon name="log-out"></ion-icon></span>
+                        <span class="sidebar_text">Cerrar sesión</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-    </nav>
-
-    <h2 style="text-align: center; margin-top: 8%;">Actualizar integrantes</h1>
+        <div class="content">
+    <h2 style="text-align: center; margin-top: 2%;">Actualizar integrantes</h1>
 
     <?php
     if(isset($_POST['actualizar'])){
@@ -114,7 +142,8 @@
             <div class="row  d-flex justify-content-center ">
                 <input name='actualizar' id='actualizar' style='display:none;'></input>
                 <div class="col-md-4">
-                <label for="" class="form-label">Pertenencia al GDIT</label>
+                    <div class="container">
+                        <label for="" class="form-label">Pertenencia al GDIT</label>
                         <select name="estado" id="escuela" class="form-select">
                             <?php
                                 if($alumno['estado']=="ACTIVO"){
@@ -127,6 +156,7 @@
                             ?>
                     
                     </select>
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <div class="container">
@@ -191,8 +221,8 @@
                         <!--Input de la fecha de nacimiento-->
                         <label for="" class="form-label">Fecha de nacimiento</label>
                         <input type="date" name="nacimiento" id="nacimiento" class="form-control" value=<?= $alumno['fechaNacimiento']?> required>
-
-                        <!--Input de la fecha de nacimiento-->
+                        <br>
+                        <!--Input del correo-->
                         <label for="" class="form-label">Correo</label>
                         <input type="mail" name="correo" id="correo" class="form-control" value=<?= $alumno['correo']?> required>
 
@@ -210,23 +240,61 @@
                         <label for="" class="form-label">Edad</label>
                         <input type="numeric" name="edad" id="edad" class="form-control"value=<?= $alumno['edad']?> required>
                         <br>
-                       <!-- selector del Estado civil-->
+                       <!--Gerencia del miembro-->
                        <label for="" class="form-label">Area de gerencia</label>
                         <select name="area" id="area" class="form-select">
 
                         <?php
-                        if($alumno['Area']=="Logistica"){
+                        if($alumno['Area']=="Gerencia de Logística"){
                             echo "<option value=1 selected>Logistica</option>";
                             echo "<option value=2>Desarrollo de proyectos</option>";
                             echo "<option value=3>Marketing</option>";
-                        }else if($alumno['Area']=="Desarrollo de proyectos"){
+                        }else if($alumno['Area']=="Gerencia de Desarrollo de Proyectos"){
                             echo "<option value=1>Logistica</option>";
                             echo "<option value=2 selected>Desarrollo de proyectos</option>";
                             echo "<option value=3>Marketing</option>";
-                        }else if($alumno['Area']=="Marketing"){
+                        }else if($alumno['Area']=="Gerencia de Comunicaciones"){
                             echo "<option value=1>Logistica</option>";
                             echo "<option value=2>Desarrollo de proyectos</option>";
                             echo "<option value=3 selected>Marketing</option>";
+                        }else{
+                            echo "<option value=4>Otro</option>";
+                        }
+                        
+                           
+                        ?>
+                     
+                    </select>
+                    <br>
+                    <!--Area del miembro-->
+                    <label for="" class="form-label">SubArea de gerencia</label>
+                        <select name="subarea" id="subarea" class="form-select">
+                        
+                        <?php
+                        if($alumno['Area']=="Gerencia de Logística"){
+                            if($alumno['Subarea']=="Gestión de datos y control organizacional"){
+                                echo "<option value=5 selected>Gestión de datos y control organizacional</option>";
+                                echo "<option value=6>Relaciones Públicas</option>";
+                            } if($alumno['Subarea']=="Relaciones Públicas"){
+                                echo "<option value=5>Gestión de datos y control organizacional</option>";
+                                echo "<option value=6 selected>Relaciones Públicas</option>";
+                            }
+                        }else if($alumno['Area']=="Gerencia de Desarrollo de Proyectos"){
+                            if($alumno['Subarea']=="Planificación, Control y Evaluación de Proyectos PCEP"){
+                                echo "<option value=3 selected>Planificación, Control y Evaluación de Proyectos PCEP</option>";
+                                echo "<option value=4>Capacitación, Desarrollo y Mejora de Procesos CDMP</option>";
+                            } if($alumno['Subarea']=="Capacitación, Desarrollo y Mejora de Procesos CDMP"){
+                                echo "<option value=3>Planificación, Control y Evaluación de Proyectos PCEP</option>";
+                                echo "<option value=4 selected>Capacitación, Desarrollo y Mejora de Procesos CDMP</option>";
+                            }
+                        }else if($alumno['Area']=="Gerencia de Comunicaciones"){
+                            if($alumno['Subarea']=="Marketing"){
+                                echo "<option value=1 selected>Marketing</option>";
+                                echo "<option value=2>Comunicación y Desarrollo Interno</option>";
+                            } if($alumno['Subarea']=="Comunicación y Desarrollo Interno"){
+                                echo "<option value=1>Marketing</option>";
+                                echo "<option value=2 selected>Comunicación y Desarrollo Interno</option>";
+                            }
                         }else{
                             echo "<option value=4>Otro</option>";
                         }
@@ -266,18 +334,14 @@
         </form>
 
     </div>
+    </div>
+    </div>
         <br>
     
 
-     <!--Pie de pagina-->
-    <footer class="text-center text-white fixed-bottom" style="background-color: rgb(19, 44, 51); height:7%;">
-
-        <div class="text-center p-3" style="background-color: rgba(5, 1, 1, 0.2);">
-            © 2021 Copyright. Propiedad del Area de Administracion de datos | Grupo de Investigacio e innovacion tecnologica GDIT:
-            <a class="text-white" href="https://mdbootstrap.com/">GDIT Asociate</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
+    <?php
+        require('footer.php');
+    ?>
     
    
     <!-- Optional JavaScript -->
@@ -285,6 +349,16 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!--Own script-->
+    <script src="./scripts/sidebar.js"></script>
+    <script src="./scripts/changeInput.js"></script>
+
+
+    <!--Íconos-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 
 </html>

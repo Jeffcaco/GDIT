@@ -12,7 +12,8 @@
     <title>Home</title>
     <!--Developers 
         @Castillo Cornejo, Jeffrey Bryan		
-        @Mitma Huaccha, Johan Valerio  	-->
+        @Mitma Huaccha, Johan Valerio  	
+        @Porras Muñoz, Bruno Franchesco -->
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,68 +23,139 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/31127b7562.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="css/styles.css">
+    <!--Own styles-->
+	<link rel="stylesheet" href="styles/index.css">
 </head>
 
 <body class="body">
-<nav class="navbar  navbar-bark navbar-expand-lg" style="background-color: rgb(18, 110, 130);"> <!-- rgb(18, 110, 130)-->
-        <div class="container-fluid">
-            <div>
-                <img src="https://i.ibb.co/sPhKV5z/gdit-logo-online.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" id="logo" alt="logo de veterinaria"
-                    style="width: 60px;height: 60px;">
-                <a class="navbar-brand" href="#" style="color: white;">GDIT Logistica | Administración de datos</a>
-                
-            </div>
+    <?php
+        include('navbar.php');
+    ?>
 
-            <a class="btn " href="../Login/cerrar_sesion.php" role="button" style="background-color: rgb(19, 44, 51); color:white">Log Out</a>
-
+    <div class="super_container">
+    
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon icon_active"><ion-icon name="home"></ion-icon></span>
+                        <span class="sidebar_text icon_active">Inicio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="consultar_integrantes.php">
+                        <span class="icon"><ion-icon name="server"></ion-icon></span>
+                        <span class="sidebar_text">Consultar/Actualizar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Dashboard/index.php">
+                        <span class="icon"><ion-icon name="documents"></ion-icon></span>
+                        <span class="sidebar_text">Ver dashboards</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Login/cerrar_sesion.php">
+                        <span class="icon"><ion-icon name="log-out"></ion-icon></span>
+                        <span class="sidebar_text">Cerrar sesión</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-    </nav>
-
-    <h1 style="text-align: center;">Administracion de Integrantes | Logistica</h1>
-    <!--PANEL DE ACTIVIDADES-->
+        <div class="content">
+            <div class="main_container">
+                <div class="mv_container">
+                    <div class="mv_element">
+                        <h3>Misión</h3>
+                        <p>
+                            Asegurar que los eventos, enfocados a la capacitación, se realicen adecuadamente, a través 
+                            de la obtención de recursos necesarios tales como aliados estratégicos, información relevante 
+                            y coordinación adecuada. Además de lograr una correcta gestión de los datos organizacionales.
+                        </p>
+                    </div>
+                    <div class="mv_element">
+                        <h3>Visión</h3>
+                        <p>
+                            Ser un área que se caracterice por la realización de sus funciones y trabajo en equipo 
+                            eficazmente, a través del tiempo, logrando que GDIT sea una agrupación resaltante en la facultad.
+                        </p>
+                    </div>
+                </div>
+                <div class="mv_container">
+                    <div class="mv_element">
+                        <h3>Objetivo anual</h3>
+                        <p>
+                            Ser un área que se caracterice por la realización de sus funciones y trabajo en equipo 
+                            eficazmente, a través del tiempo, logrando que GDIT sea una agrupación resaltante en la facultad.
+                        </p>
+                    </div>
+                    <div class="mv_element">
+                        <h3>Últimas novedades:</h3>
+                        <p>
+                            -Sección en la que se colocarán algunos anuncios, btw terminará siendo solo floro
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="main_container">
+                <div class="mv_container areas_container">
+                    <h3>Nuestras áreas</h3>
+                    <div class="areas_sub_container">
+                        <div class="areas_element">
+                            <div class="card_area">
+                                <p>Gestión de datos y control organizacional</p>
+                            </div>
+                            <div class="areas_members">
+                                <h4>Miembros:</h4>
+                                <h4>10</h4>
+                            </div>
+                            <a href="#"><p>Ver todos los miembros del área</p></a>
+                        </div>
+                        <div class="areas_element">
+                            <div class="card_area">
+                                <p>Relaciones Públicas</p>
+                            </div>
+                            <div class="areas_members">
+                                <h4>Miembros:</h4>
+                                <h4>10</h4>
+                            </div>
+                            <a href="#"><p>Ver todos los miembros del área</p></a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="mv_container">
+                    <h3>Recuerdos de logística xd</h3>
+                    <div class="img_container">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="img/Recuerdo1.jpeg" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/Recuerdo2.jpeg" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/Recuerdo3.jpg" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/Recuerdo4.PNG" class="d-block w-100" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <br>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-4">
-                <div class="container">
-                    <a role="button" class="btn btn-secondary btn-lg" href="registrar_integrantes.php">
-                        Registrar integrante
-                    </a>
-                </div>
-
-            </div>
-            <div class="col-md-4">
-                <div class="container">
-                    <a role="button" class="btn btn-secondary btn-lg" href="consultar_integrantes.php">
-                        Consultar | Actualizar
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="container">
-                    <a role="button" class="btn btn-secondary btn-lg" href="../Dashboard/index.php">
-                        Ver Dashboards
-                    </a>
-                </div>
-
-            </div>
-
-        </div>
-        <br>
-        <div class="row justify-content-center">
-           
-
-        
-        </div>
-        <br>
-        <div class="row justify-content-center">
-
-            <img src="https://i.redd.it/jy8ocouzn8311.jpg" alt="tecleando" style="width: 20%; height: auto;" class="rounded">
-        </div>
-
-
-
+    <br>
 
      <!--Pie de pagina-->
     <footer class="text-center text-white fixed-bottom" style="background-color: rgb(19, 44, 51); height:7%;">
@@ -101,6 +173,14 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!--Own script-->
+    <script src="./scripts/sidebar.js"></script>
+    <script src="./scripts/carousel.js"></script>
+
+    <!--Íconos-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 
 </html>
