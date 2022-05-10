@@ -116,8 +116,8 @@ $row0 = mysqli_fetch_array($result0);
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Realizado por:</div>
-                    Copyright © Jeffcaco, <?php echo date("Y"); ?>
+                    <div class="small">Realizado por:
+                    @Bruno @Jovamih @Jeffcaco </div>
                 </div>
             </nav>
         </div>

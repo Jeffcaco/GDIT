@@ -27,7 +27,8 @@
 
                         <br>
 
-                        <?php $fecha=date('Y-d-m'); ?>
+                        <?php date_default_timezone_set('America/Los_Angeles');
+                        $fecha=date('Y-m-d'); ?>
                         <label for="date" class="form-label"><i>Fecha de registro</i> : <b><?php echo $fecha ?></b></label>
 
                     </div>

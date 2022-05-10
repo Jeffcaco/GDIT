@@ -97,8 +97,8 @@ $row0 = mysqli_fetch_array($result0);
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Realizado por:</div>
-                    Copyright © Jeffcaco, <?php echo date("Y"); ?>
+                    <div class="small">Realizado por:
+                    @Bruno @Jovamih @Jeffcaco </div>
                 </div>
             </nav>
         </div>
@@ -124,7 +124,7 @@ $row0 = mysqli_fetch_array($result0);
                                             <tr>
                                                 <th scope="col">#</th>
                                                 <th scope="col">Nombre de reporte</th>
-                                                <th scope="col">Fecha</th>
+                                                <th scope="col">Fecha (Y-m-d)</th>
                                                 <th scope="col">Ver</th>
                                                 <th scope="col">Acción</th>
                                             </tr>
