@@ -241,3 +241,19 @@ body {
         left: 80px;
     }
 }
+/*Para los botones en la página del dashboard*/
+.dash_btns_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+.dash_btn {
+    background: var(--color_card);
+    color: #FFF;
+    border-radius: 5px;
+    margin: 30px;
+    padding: 10px;
+    cursor: pointer;
+}

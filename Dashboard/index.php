@@ -43,12 +43,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="../Principal/registrar_integrantes.php">
-                        <span class="icon"><ion-icon name="person-add"></ion-icon></span>
-                        <span class="sidebar_text">Registrar integrante</span>
-                    </a>
-                </li>
-                <li>
                     <a href="../Principal/consultar_integrantes.php">
                         <span class="icon"><ion-icon name="server"></ion-icon></span>
                         <span class="sidebar_text">Consultar/Actualizar</span>
@@ -71,7 +65,24 @@
 
         <div class="content">
             <div>
-                <iframe width="100%" height="730" src="https://app.powerbi.com/view?r=eyJrIjoiNWVhZTA5YmEtNTMyNS00NmM5LTg2YjgtOTAyM2MzYjNiZmFkIiwidCI6ImFmMTA3NDlkLTNlMWQtNGQxMy04NmQ5LTg2ZmJlYTRlY2I0OSJ9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>
+                <iframe id="dashb" width="100%" height="730" src="https://app.powerbi.com/view?r=eyJrIjoiNWVhZTA5YmEtNTMyNS00NmM5LTg2YjgtOTAyM2MzYjNiZmFkIiwidCI6ImFmMTA3NDlkLTNlMWQtNGQxMy04NmQ5LTg2ZmJlYTRlY2I0OSJ9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>
+            </div>
+            <div class="dashboards">
+                <div class="dash_btns_container">
+                    <?php
+                    include_once("../Database/conexion.php");
+                    
+                    $query_dash = "SELECT nombre_dashboard, link_dashboard FROM Dashboard;";
+                    
+                    $result = mysqli_query($conexion, $query_dash);
+                    $num_resultados = mysqli_num_rows($result);
+                    
+                    for ($i=0; $i <$num_resultados; $i++) {
+                        $row = mysqli_fetch_array($result);
+                        echo "<p class='dash_btn' dash='".$row['link_dashboard']."'>".$row['nombre_dashboard']."</p>";
+                    }
+                    ?>
+                </div>
             </div>
         </div>
     </div>
@@ -88,6 +99,7 @@
     
     <!--Own script-->
     <script src="../Principal/scripts/sidebar.js"></script>
+    <script src="../Principal/scripts/chosseDash.js"></script>
 
     <!--Íconos-->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

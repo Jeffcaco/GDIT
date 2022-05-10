@@ -43,12 +43,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="registrar_integrantes.php">
-                        <span class="icon"><ion-icon name="person-add"></ion-icon></span>
-                        <span class="sidebar_text">Registrar integrante</span>
-                    </a>
-                </li>
-                <li>
                     <a href="consultar_integrantes.php">
                         <span class="icon"><ion-icon name="server"></ion-icon></span>
                         <span class="sidebar_text">Consultar/Actualizar</span>

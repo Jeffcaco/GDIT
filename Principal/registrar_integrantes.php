@@ -74,12 +74,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <span class="icon icon_active"><ion-icon name="person-add"></ion-icon></span>
-                        <span class="sidebar_text icon_active">Registrar integrante</span>
-                    </a>
-                </li>
-                <li>
                     <a href="consultar_integrantes.php">
                         <span class="icon"><ion-icon name="server"></ion-icon></span>
                         <span class="sidebar_text">Consultar/Actualizar</span>
@@ -171,6 +165,7 @@
                                 <label for="" class="form-label">Fecha de nacimiento</label>
                                 <input type="date" name="nacimiento" id="nacimiento" class="form-control" required>
 
+                                <br>
                                 <!--Input de la fecha de nacimiento-->
                                 <label for="" class="form-label">Correo</label>
                                 <input type="mail" name="correo" id="correo" class="form-control" required>
@@ -198,6 +193,17 @@
                             
                             </select>
                                 <br>
+                                <!--Area del miembro-->
+                    <label for="" class="form-label">SubArea de gerencia</label>
+                        <select name="subarea" id="subarea" class="form-select">
+                        
+                        <?php
+                            echo "<option value=5 selected>Gestión de datos y control organizacional</option>";
+                            echo "<option value=6>Relaciones Públicas</option>";
+                        ?>
+                     
+                    </select>
+                    <br>
                                 <!--Ingresars escuela de la facultad-->
                                 <label for="" class="form-label">Escuela de la facultad</label>
                                 <select name="escuela" id="escuela" class="form-select">
@@ -235,6 +241,7 @@
 
     <!--Own script-->
     <script src="./scripts/sidebar.js"></script>
+    <script src="./scripts/changeInput.js"></script>
 
     <!--Íconos-->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

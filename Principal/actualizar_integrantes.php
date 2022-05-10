@@ -14,7 +14,7 @@
             $nacimiento = $_POST['nacimiento'];
             $correo= $_POST['correo'];
             $edad= $_POST['edad'];
-            $idarea= $_POST['area'];
+            $idsubarea= $_POST['subarea'];
             $idescuela= $_POST['escuela'];
 
             $estado = $_POST['estado'];
@@ -30,7 +30,7 @@
                          telefono='$telefono',
                          correo='$correo',
                          estado='$estado',
-                         idarea=$idarea, idescuela=$idescuela
+                         idsubarea=$idsubarea, idescuela=$idescuela
                         WHERE codAlumno='$codigo'";
                         //echo $query;
                //die ($query);
@@ -94,7 +94,35 @@
         include('navbar.php');
     ?>
     <div class="super_container">
-
+    <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="index.php">
+                        <span class="icon"><ion-icon name="home"></ion-icon></span>
+                        <span class="sidebar_text">Inicio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon icon_active"><ion-icon name="server"></ion-icon></span>
+                        <span class="sidebar_text icon_active">Consultar/Actualizar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Dashboard/index.php">
+                        <span class="icon"><ion-icon name="documents"></ion-icon></span>
+                        <span class="sidebar_text">Ver dashboards</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Login/cerrar_sesion.php">
+                        <span class="icon"><ion-icon name="log-out"></ion-icon></span>
+                        <span class="sidebar_text">Cerrar sesión</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
     <h2 style="text-align: center; margin-top: 2%;">Actualizar integrantes</h1>
 
     <?php
@@ -114,7 +142,8 @@
             <div class="row  d-flex justify-content-center ">
                 <input name='actualizar' id='actualizar' style='display:none;'></input>
                 <div class="col-md-4">
-                <label for="" class="form-label">Pertenencia al GDIT</label>
+                    <div class="container">
+                        <label for="" class="form-label">Pertenencia al GDIT</label>
                         <select name="estado" id="escuela" class="form-select">
                             <?php
                                 if($alumno['estado']=="ACTIVO"){
@@ -127,6 +156,7 @@
                             ?>
                     
                     </select>
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <div class="container">
@@ -303,6 +333,7 @@
             <br>
         </form>
 
+    </div>
     </div>
     </div>
         <br>

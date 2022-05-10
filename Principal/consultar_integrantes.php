@@ -40,12 +40,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="registrar_integrantes.php">
-                        <span class="icon"><ion-icon name="person-add"></ion-icon></span>
-                        <span class="sidebar_text">Registrar integrante</span>
-                    </a>
-                </li>
-                <li>
                     <a href="#">
                         <span class="icon icon_active"><ion-icon name="server"></ion-icon></span>
                         <span class="sidebar_text icon_active">Consultar/Actualizar</span>
@@ -106,9 +100,9 @@
                                 </select>
 
                                 <select name="valor_area" id="valor_area" class="form-select"  style="display:none;">
-                                <option value="Logistica">Logistica</option>
-                                <option value="Desarrollo de proyectos">Desarrollo de proyectos</option>
-                                <option value="Marketing">Marketing</option>
+                                <option value="Gerencia de Logística">Gerencia de Logística</option>
+                                <option value="Gerencia de Desarrollo de Proyectos">Gerencia de Desarrollo de Proyectos</option>
+                                <option value="Gerencia de Comunicaciones">Gerencia de Comunicaciones</option>
                                 </select>
 
                                 <select name="valor_escuela" id="valor_escuela" style="display:none;" class="form-select">
@@ -171,7 +165,7 @@
                           $criterio = "I.sexo";
                           $valor = $_POST["valor_sexo"];
                       }else if($criterio == "Area"){
-                          $criterio = "A.nombre";
+                          $criterio = "(SELECT nombre FROM area AS A WHERE A.idarea = S.idarea)";
                           $valor = $_POST["valor_area"];
                       }else if($criterio == "Escuela"){
                           $criterio = "E.nombre";
