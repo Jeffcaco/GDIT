@@ -245,23 +245,20 @@
                         <select name="area" id="area" class="form-select">
 
                         <?php
-                        if($alumno['Area']=="Gerencia de Logística"){
-                            echo "<option value=1 selected>Logistica</option>";
-                            echo "<option value=2>Desarrollo de proyectos</option>";
-                            echo "<option value=3>Marketing</option>";
-                        }else if($alumno['Area']=="Gerencia de Desarrollo de Proyectos"){
-                            echo "<option value=1>Logistica</option>";
-                            echo "<option value=2 selected>Desarrollo de proyectos</option>";
-                            echo "<option value=3>Marketing</option>";
-                        }else if($alumno['Area']=="Gerencia de Comunicaciones"){
-                            echo "<option value=1>Logistica</option>";
-                            echo "<option value=2>Desarrollo de proyectos</option>";
-                            echo "<option value=3 selected>Marketing</option>";
-                        }else{
-                            echo "<option value=4>Otro</option>";
+
+                        $mysql_gerencias = "SELECT * FROM area;";
+                        $resultado_gerencias = mysqli_query($conexion,$mysql_gerencias);
+                        $num_gerencias = mysqli_num_rows($resultado_gerencias);
+                            
+                        for ($i=0; $i <$num_gerencias; $i++) {
+                            $row_g = mysqli_fetch_array($resultado_gerencias);
+                            
+                            if($alumno['Area']==$row_g['nombre']) {
+                                echo "<option value=".$row_g['idarea']." selected>".$row_g['nombre']."</option>";
+                            } else {
+                                echo "<option value=".$row_g['idarea'].">".$row_g['nombre']."</option>";
+                            }
                         }
-                        
-                           
                         ?>
                      
                     </select>
@@ -271,35 +268,24 @@
                         <select name="subarea" id="subarea" class="form-select">
                         
                         <?php
-                        if($alumno['Area']=="Gerencia de Logística"){
-                            if($alumno['Subarea']=="Gestión de datos y control organizacional"){
-                                echo "<option value=5 selected>Gestión de datos y control organizacional</option>";
-                                echo "<option value=6>Relaciones Públicas</option>";
-                            } if($alumno['Subarea']=="Relaciones Públicas"){
-                                echo "<option value=5>Gestión de datos y control organizacional</option>";
-                                echo "<option value=6 selected>Relaciones Públicas</option>";
+                        $mysql_areas = "SELECT S.idsubarea, S.idarea, S.nombre AS Subarea, A.nombre AS Area FROM subarea AS S 
+                                        LEFT JOIN area AS A ON A.idarea = S.idarea;";
+                        $resultado_areas = mysqli_query($conexion,$mysql_areas);
+                        $num_areas = mysqli_num_rows($resultado_areas);
+
+                        for ($i=0; $i <$num_areas; $i++) {
+                            $row_a = mysqli_fetch_array($resultado_areas);
+
+                            if($alumno['Area']==$row_a['Area']){
+                                if($alumno['Subarea']==$row_a['Subarea']){
+                                    echo "<option id_area=".$row_a['idarea']." value=".$row_a['idsubarea']." selected>".$row_a['Subarea']."</option>";
+                                } else {
+                                    echo "<option id_area=".$row_a['idarea']." value=".$row_a['idsubarea'].">".$row_a['Subarea']."</option>";
+                                }
+                            } else {
+                                echo "<option id_area=".$row_a['idarea']." class='ocultar_subarea' value=".$row_a['idsubarea'].">".$row_a['Subarea']."</option>";
                             }
-                        }else if($alumno['Area']=="Gerencia de Desarrollo de Proyectos"){
-                            if($alumno['Subarea']=="Planificación, Control y Evaluación de Proyectos PCEP"){
-                                echo "<option value=3 selected>Planificación, Control y Evaluación de Proyectos PCEP</option>";
-                                echo "<option value=4>Capacitación, Desarrollo y Mejora de Procesos CDMP</option>";
-                            } if($alumno['Subarea']=="Capacitación, Desarrollo y Mejora de Procesos CDMP"){
-                                echo "<option value=3>Planificación, Control y Evaluación de Proyectos PCEP</option>";
-                                echo "<option value=4 selected>Capacitación, Desarrollo y Mejora de Procesos CDMP</option>";
-                            }
-                        }else if($alumno['Area']=="Gerencia de Comunicaciones"){
-                            if($alumno['Subarea']=="Marketing"){
-                                echo "<option value=1 selected>Marketing</option>";
-                                echo "<option value=2>Comunicación y Desarrollo Interno</option>";
-                            } if($alumno['Subarea']=="Comunicación y Desarrollo Interno"){
-                                echo "<option value=1>Marketing</option>";
-                                echo "<option value=2 selected>Comunicación y Desarrollo Interno</option>";
-                            }
-                        }else{
-                            echo "<option value=4>Otro</option>";
                         }
-                        
-                           
                         ?>
                      
                     </select>

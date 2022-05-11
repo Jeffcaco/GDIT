@@ -65,7 +65,7 @@
 
         <div class="content">
             <div>
-                <iframe id="dashb" width="100%" height="730" src="https://app.powerbi.com/view?r=eyJrIjoiNWVhZTA5YmEtNTMyNS00NmM5LTg2YjgtOTAyM2MzYjNiZmFkIiwidCI6ImFmMTA3NDlkLTNlMWQtNGQxMy04NmQ5LTg2ZmJlYTRlY2I0OSJ9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>
+                <iframe id="dashb" class="responsive-iframe" src="https://app.powerbi.com/view?r=eyJrIjoiNWVhZTA5YmEtNTMyNS00NmM5LTg2YjgtOTAyM2MzYjNiZmFkIiwidCI6ImFmMTA3NDlkLTNlMWQtNGQxMy04NmQ5LTg2ZmJlYTRlY2I0OSJ9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>
             </div>
             <div class="dashboards">
                 <div class="dash_btns_container">

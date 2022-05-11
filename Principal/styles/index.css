@@ -247,7 +247,6 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding-bottom: 50px;
 }
 .dash_btn {
     background: var(--color_card);
@@ -256,4 +255,13 @@ body {
     margin: 30px;
     padding: 10px;
     cursor: pointer;
+}
+/*Iframe*/
+.responsive-iframe {
+    width: 100%;
+    height: 60vh;
+}
+/*Inputs*/
+.ocultar_subarea {
+    display: none;
 }

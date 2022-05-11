@@ -99,6 +99,19 @@
             </div>
             <div class="main_container">
                 <div class="mv_container areas_container">
+                    <?php
+                        include_once("../Database/conexion.php");
+
+                        $query_miembros_Gestion="SELECT codAlumno FROM integrantes 
+                        WHERE idsubarea = 5;";
+                        $resultado_miembros_Gestion = mysqli_query($conexion,$query_miembros_Gestion);
+                        $num_miembros_Gestion = mysqli_num_rows($resultado_miembros_Gestion);
+
+                        $query_miembros_Relacion="SELECT codAlumno FROM integrantes 
+                        WHERE idsubarea = 6;";
+                        $resultado_miembros_Relacion = mysqli_query($conexion,$query_miembros_Relacion);
+                        $num_miembros_Relacion = mysqli_num_rows($resultado_miembros_Relacion);
+                    ?>
                     <h3>Nuestras áreas</h3>
                     <div class="areas_sub_container">
                         <div class="areas_element">
@@ -107,9 +120,11 @@
                             </div>
                             <div class="areas_members">
                                 <h4>Miembros:</h4>
-                                <h4>10</h4>
+                                <?php
+                                    echo "<h4 id='h4_datos'>".$num_miembros_Gestion."</h4>"
+                                ?>
                             </div>
-                            <a href="#"><p>Ver todos los miembros del área</p></a>
+                            <a href="consultar_integrantes.php"><p>Ver todos los miembros del área</p></a>
                         </div>
                         <div class="areas_element">
                             <div class="card_area">
@@ -117,9 +132,11 @@
                             </div>
                             <div class="areas_members">
                                 <h4>Miembros:</h4>
-                                <h4>10</h4>
+                                <?php
+                                    echo "<h4 id='h4_relaciones'>".$num_miembros_Relacion."</h4>"
+                                ?>
                             </div>
-                            <a href="#"><p>Ver todos los miembros del área</p></a>
+                            <a href="consultar_integrantes.php"><p>Ver todos los miembros del área</p></a>
                         </div>
                     </div>
                 </div>
@@ -175,7 +192,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!--Own script-->
     <script src="./scripts/sidebar.js"></script>
-    <script src="./scripts/carousel.js"></script>
 
     <!--Íconos-->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
