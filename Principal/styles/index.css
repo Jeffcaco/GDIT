@@ -22,7 +22,7 @@ body {
 /*Sidebar*/
 .sidebar {
     position: fixed;
-    width: 300px;
+    width: 18vw;
     height: 100vh;
     background: var(--nav_color);
     border-left: 10px solid var(--nav_color);
@@ -40,7 +40,7 @@ body {
     position: relative;
     width: 100%;
     list-style: none;
-    border-top-left-radius: 30px;
+    border-top-left-radius: 10px;
     border-bottom-left-radius: 30px;
 }
 .sidebar ul li:hover {
@@ -69,7 +69,7 @@ body {
     text-align: center;
 }
 .sidebar ul li a .icon ion-icon {
-    font-size: 25px;
+    font-size: 20px;
 }
 .sidebar ul li a .sidebar_text {
     position: relative;
